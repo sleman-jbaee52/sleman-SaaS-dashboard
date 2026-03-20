@@ -1,0 +1,138 @@
+/* Custom animations and effects for professional form styling */
+
+@keyframes shimmer {
+  0% {
+    background-position: -468px 0;
+  }
+  100% {
+    background-position: 468px 0;
+  }
+}
+
+@keyframes shake {
+  0%,
+  100% {
+    transform: translateX(0);
+  }
+  25% {
+    transform: translateX(-4px);
+  }
+  75% {
+    transform: translateX(4px);
+  }
+}
+
+@keyframes pulse-glow {
+  0%,
+  100% {
+    box-shadow: 0 0 0 0 rgba(99, 102, 241, 0.7);
+  }
+  50% {
+    box-shadow: 0 0 0 12px rgba(99, 102, 241, 0);
+  }
+}
+
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-4px);
+  }
+}
+
+/* Shimmer button effect */
+.shimmer {
+  background: linear-gradient(
+    90deg,
+    #667eea 25%,
+    #764ba2 50%,
+    #f093fb 75%,
+    #667eea 100%
+  );
+  background-size: 300% 100%;
+  animation: shimmer 1.5s infinite;
+}
+
+/* Enhanced focus glow */
+.input-glow:focus {
+  box-shadow:
+    0 0 0 3px rgba(99, 102, 241, 0.1),
+    0 0 0 6px rgba(99, 102, 241, 0.1),
+    inset 0 1px 0 rgba(255, 255, 255, 0.5);
+}
+
+/* Error shake + pulse */
+.error-shake {
+  animation:
+    shake 0.5s cubic-bezier(0.36, 0.07, 0.19, 0.97) both,
+    pulse-glow 1s infinite;
+}
+
+/* Floating label enhancement */
+.floating-label {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.peer-focus ~ .floating-label,
+.peer-valid ~ .floating-label {
+  transform: translateY(-1.25rem) scale(0.85);
+  color: #6366f1;
+}
+
+/* Gradient text */
+.gradient-text {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Button hover lift */
+.button-lift {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.button-lift:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
+}
+
+/* Custom scrollbar for modal */
+.modal-scrollbar::-webkit-scrollbar {
+  width: 4px;
+}
+.modal-scrollbar::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 2px;
+}
+.modal-scrollbar::-webkit-scrollbar-thumb {
+  background: rgba(99, 102, 241, 0.5);
+  border-radius: 2px;
+}
+.modal-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: rgba(99, 102, 241, 0.7);
+}
+
+/* Dark mode adjustments */
+@media (prefers-color-scheme: dark) {
+  .input-glow:focus {
+    box-shadow:
+      0 0 0 3px rgba(99, 102, 241, 0.3),
+      0 0 0 6px rgba(99, 102, 241, 0.2),
+      inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  }
+}
+
+/* Success confetti burst (can be triggered via JS class) */
+@keyframes confetti {
+  0% {
+    transform: translateY(0) rotate(0deg) scale(1);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(-100vh) rotate(720deg) scale(0);
+    opacity: 0;
+  }
+}
